@@ -3,13 +3,10 @@ const { chromium } = require('playwright');
 const fs = require('fs').promises;
 const path = require('path');
 
-// Run playwright install to ensure browser binaries are downloaded
-const { install } = require('playwright');
-install();
-
 async function scrapeAndSave() {
   const browser = await chromium.launch({
     headless: true,
+    executablePath: '/path/to/chrome', // Update this path with the correct one
   });
 
   const context = await browser.newContext({
